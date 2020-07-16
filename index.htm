@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        * {
+            font-family: 'Roboto';
+        }
+    </style>
+    <title>
+        Restaurant Manager
+    </title>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="(item, index) in items" :key="index" :color="item.color" :is="item.component"></div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            Vue.config.productionTip = false
+            Vue.component('email-queue-item', {
+                template: `<div><h3 :style="{'background-color':color}">Email: {{color}}</h3></div>`,
+                props: ['color']
+            })
+            Vue.component('message-queue-item', {
+                template: `<div><h1 :style="{'background-color':color}">Message: {{color}}</h1></div>`,
+                props: ['color']
+            })
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        items: [{
+                            'component': 'email-queue-item',
+                            'color': 'red'
+                        }, {
+                            'component': 'message-queue-item',
+                            'color': 'blue'
+                        }, {
+                            'component': 'email-queue-item',
+                            'color': 'green'
+                        }]
+                    }
+                }
+            })
+        </script>
+</body>
+
+</html>
